@@ -1,0 +1,280 @@
+.sign-in {
+  .ant-tabs-nav {
+    width: 100%;
+  }
+  .ant-tabs-bar {
+    margin: 0 0 50px 0;
+  }
+  .ant-tabs-tab:extend(.f24) {
+    width: 50%;
+    text-align: center;
+    line-height: 24px;
+  }
+  .ant-tabs-large-bar {
+    .ant-tabs-tab {
+      padding: 28px;
+    }
+  }
+
+  .ant-form-item {
+    margin-bottom: 40px;
+  }
+  .ant-form-item-with-help {
+    margin-bottom: 21px !important;
+  }
+}
+
+.ant-input :extend(.f12) {
+}
+.ant-select-selection :extend(.f12) {
+}
+
+.ant-popover-inner-content {
+  padding: 12px 0;
+}
+.ant-popover-arrow {
+  display: none;
+}
+
+.ant-menu-inline {
+  border-right: none;
+}
+
+.ant-list-item-meta {
+  align-items: center;
+  &-content {
+    width: 204px;
+  }
+  &-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  &-description {
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.ant-pagination-item {
+  &:focus,
+  &:hover {
+    border: none;
+    background: #39a1fd;
+    a {
+      color: #ffffff;
+    }
+  }
+  &-active {
+    background: #39a1fd;
+    border: none;
+    a {
+      color: #ffffff;
+    }
+  }
+}
+
+.ant-pagination-next,
+.ant-pagination-prev {
+  &:focus,
+  &:hover .ant-pagination-item-link {
+    border: none;
+    background: #39a1fd;
+    i {
+      color: #ffffff;
+    }
+  }
+}
+
+/* 全局table样式 */
+.global-table {
+  &_head-tr {
+    & > th {
+      background: #eeeeee !important;
+      font-size: 12px;
+      padding: 0 16px !important;
+      height: 30px;
+      color: #333333 !important;
+    }
+    &--40 > th {
+      background: #eeeeee !important;
+      font-size: 12px;
+      padding: 0 16px !important;
+      height: 40px;
+      color: #333333 !important;
+    }
+  }
+  &_row-tr {
+    & > td {
+      color: #333333;
+    }
+    &--114 {
+      & > td {
+        color: #333333 !important;
+        height: 114px;
+      }
+    }
+  }
+  &--none {
+    display: none;
+  }
+}
+// table checkbox
+.check-box {
+  &-circular {
+    .ant-checkbox-inner {
+      border-radius: 50%;
+    }
+  }
+  &-rectangle {
+    .ant-checkbox-inner {
+      width: 12px;
+      height: 12px;
+      background: #e6e6e6;
+      border: 1px solid #cccccc;
+      border-radius: 2px;
+    }
+  }
+}
+
+// table checkbox
+
+/* 全局弹窗样式 */
+.global-modal {
+  .ant-modal {
+    &-header {
+      padding: 13px 24px;
+      background: #f2f2f2;
+    }
+
+    &-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    &-close-x {
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+    }
+
+    &-footer {
+      padding: 8px 40px;
+      background: #f2f2f2;
+    }
+  }
+  &-btn-ok {
+    width: 80px;
+    height: 30px !important;
+    margin-left: 20px !important;
+  }
+  &-btn-cancel {
+    width: 80px;
+    height: 30px !important;
+  }
+}
+
+/* tabs */
+.global-tabs {
+  .ant-tabs-bar {
+    margin: 0;
+    position: relative;
+    border-bottom: none;
+    background: #f2f2f2;
+    border-bottom: 1px solid #e6e6e6;
+    user-select: none;
+  }
+  .ant-tabs-content {
+    padding: 20px 50px;
+  }
+
+  .ant-tabs-tab {
+    border-radius: 0 !important;
+    margin-right: 0 !important;
+    min-width: 160px;
+    text-align: center;
+    color: #666666;
+    font-size: 14px;
+    height: 40px !important;
+    line-height: 40px !important;
+    background: #f2f2f2 !important;
+    border-top: none !important;
+    &:first-child {
+      border-right: none !important;
+      border-left: none !important;
+    }
+    &:last-child:not(.ant-tabs-tab-active) {
+      border-right: 1px solid #f2f2f2 !important;
+    }
+
+    &:hover {
+      color: #333333 !important;
+    }
+    &-active {
+      font-weight: bold;
+      color: #333333 !important;
+      background: #ffffff !important;
+    }
+  }
+}
+
+// delete modal
+.ant-modal-confirm {
+  .ant-modal-content {
+    position: relative;
+    border-radius: 4px;
+  }
+  .ant-modal-body {
+    padding: 0;
+  }
+  &-body {
+    i {
+      display: none;
+    }
+  }
+  &-title {
+    text-align: center;
+    height: 50px;
+    line-height: 50px !important;
+    background: #f2f2f2;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    border-radius: 4px 4px 0 0;
+  }
+  &-content {
+    text-align: center;
+    font-size: 16px !important;
+    color: #666666 !important;
+    margin: 60px 0 46px 0 !important;
+  }
+  &-btns {
+    float: initial !important;
+    margin: 0;
+    text-align: center;
+    background: #f2f2f2;
+    padding: 12px 0;
+    border-radius: 0 0 4px 4px;
+    button {
+      padding: 0 48px;
+      font-size: 12px;
+      height: 26px;
+      &:first-child {
+        margin-right: 12px;
+      }
+    }
+  }
+}
+/** dashboard */
+.content {
+  .ant-tabs-nav .ant-tabs-tab {
+    padding: 6px 0px 16px 0px;
+  }
+}
+
+/** head menu */
+.layout_header-main {
+  .ant-menu-item {
+    padding: 0 30px !important;
+  }
+}
