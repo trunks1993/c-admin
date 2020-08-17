@@ -1,17 +1,18 @@
-import { Form, Input, Select, Cascader, Radio, InputNumber, DatePicker } from 'antd';
-import React, { Component } from 'react';
-import ItemMap from './map';
-import FormContext from './FormContext';
-import TextArea from 'antd/lib/input/TextArea';
-import FormUpLoad from '../FormUpLoad';
-import GlobalUpload from '../GlobalUpload';
-// import TreeCheck from "@/pages/sys/manager/role/components/TreeCheck";
-// import BlockCheckbox from "../BlockCheckbox";
-// import GlobalCheckbox from "../GlobCheckbox";
-// import GlobalEditor from "../GlobalEditor";
-// import GlobalDatePicker from "../GlobalDatePicker";
-// import GlobalTreeSelect from "../GlobalTreeSelect";
-// import ProductSubPanel from "@/pages/product/manager/management/components/ProductSubPanel";
+import {
+  Form,
+  Input,
+  Select,
+  Cascader,
+  Radio,
+  InputNumber,
+  DatePicker,
+} from "antd";
+import React, { Component } from "react";
+import ItemMap from "./map";
+import FormContext from "./FormContext";
+import TextArea from "antd/lib/input/TextArea";
+import FormUpLoad from "../FormUpLoad";
+import FormDate from "../FormDate";
 
 const FormItem = Form.Item;
 
@@ -65,10 +66,6 @@ class WrapFormItem extends Component {
         options
       )(<Input.Password autoComplete="off" {...customProps} />),
       CstOther: getFieldDecorator(name, options)(<>{children}</>),
-      // CstTreeCheck: getFieldDecorator(
-      //   name,
-      //   options
-      // )(<TreeCheck {...customProps} />),
       CstSelect: getFieldDecorator(
         name,
         options
@@ -84,34 +81,19 @@ class WrapFormItem extends Component {
         name,
         options
       )(<FormUpLoad {...customProps} />),
-      // CstBlockCheckbox: getFieldDecorator(
-      //   name,
-      //   options
-      // )(<BlockCheckbox {...customProps} />),
       CstRadio: getFieldDecorator(
         name,
         options
       )(<Radio.Group {...customProps}>{children}</Radio.Group>),
-      // CstCheckbox: getFieldDecorator(
+      // CstDatePicker: getFieldDecorator(
       //   name,
       //   options
-      // )(<GlobalCheckbox {...customProps} />),
-      CstDatePicker: getFieldDecorator(
-        name,
-        options
-      )(<DatePicker {...customProps} />),
-      CstRangePicker: getFieldDecorator(
-        name,
-        options
-      )(<DatePicker.RangePicker {...customProps} />),
-      // CstTreeSelect: getFieldDecorator(
+      // )(<DatePicker {...customProps} />),
+      // CstRangePicker: getFieldDecorator(
       //   name,
       //   options
-      // )(<GlobalTreeSelect {...customProps} />),
-      // CstProductSubPanel: getFieldDecorator(
-      //   name,
-      //   options
-      // )(<ProductSubPanel {...customProps} />),
+      // )(<DatePicker.RangePicker {...customProps} />),
+      CstDate: getFieldDecorator(name, options)(<FormDate {...customProps} />),
       CstCascader: getFieldDecorator(
         name,
         options
@@ -127,19 +109,20 @@ class WrapFormItem extends Component {
       )(<InputNumber {...customProps} />),
     };
 
-    if (wrapperCol && labelCol) return (
-      <FormItem
-        className={className}
-        colon={false}
-        label={label}
-        help={help}
-        wrapperCol={wrapperCol}
-        labelCol={labelCol}
-        style={style}
-      >
-        {Map[type || '']}
-      </FormItem>
-    );
+    if (wrapperCol && labelCol)
+      return (
+        <FormItem
+          className={className}
+          colon={false}
+          label={label}
+          help={help}
+          wrapperCol={wrapperCol}
+          labelCol={labelCol}
+          style={style}
+        >
+          {Map[type || ""]}
+        </FormItem>
+      );
     return (
       <FormItem
         className={className}
@@ -148,7 +131,7 @@ class WrapFormItem extends Component {
         help={help}
         style={style}
       >
-        {Map[type || '']}
+        {Map[type || ""]}
       </FormItem>
     );
   }

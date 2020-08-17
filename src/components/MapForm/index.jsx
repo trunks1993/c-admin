@@ -1,6 +1,6 @@
 /*
  * @Date: 2020-06-23 21:38:43
- * @LastEditTime: 2020-07-24 09:00:15
+ * @LastEditTime: 2020-08-17 14:59:05
  */
 import { Form } from 'antd';
 import React, { Component } from 'react';
@@ -18,13 +18,13 @@ class MapForm extends Component {
   static CstBlockCheckbox;
   static CstRadio;
   static CstCheckbox;
-  static CstDatePicker;
-  static CstRangePicker;
-  static CstEditor;
+  // static CstDatePicker;
+  // static CstRangePicker;
   static CstTreeSelect;
   static CstProductSubPanel;
   static CstCascader;
   static CstInputNumber;
+  static CstDate;
 
   static defaultProps = {
     className: '',
