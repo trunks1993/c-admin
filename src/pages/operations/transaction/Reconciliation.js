@@ -2,7 +2,7 @@
  * @Author: Dad
  * @Date: 2020-07-13 19:32:18
  * @LastEditors: Dad
- * @LastEditTime: 2020-07-31 16:36:49
+ * @LastEditTime: 2020-08-18 18:43:40
  */
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Table, Pagination, Icon, Row, Col } from 'antd';
@@ -215,18 +215,9 @@ const Reconciliation = ({ dispatch, reconList, reconTotal, loading }) => {
         {_.isEmpty(reconList) ? null : (
           <>
             <div
-              style={{
-                color: '#999999',
-                fontSize: '12px',
-                float: 'left',
-                padding: 30,
-                marginTop: 8,
-              }}
+              className="cash-flow_pagination"
+              style={{ padding: '30px 30px 10px 30px' }}
             >
-              说明：1、如需自动生成对账文件，请开启相关配置。
-              2、已生成的对账单只保留7天，请您及时下载查收。
-            </div>
-            <div className="cash-flow_pagination">
               <Pagination
                 disabled={loading}
                 current={currPage}
@@ -237,6 +228,17 @@ const Reconciliation = ({ dispatch, reconList, reconTotal, loading }) => {
               <span style={{ color: '#CCCCCC', marginLeft: '10px' }}>
                 共 {reconTotal} 条 ,每页 {pageSize} 条
               </span>
+            </div>
+            <div
+              style={{
+                color: '#999999',
+                fontSize: '12px',
+                padding: '0px 30px',
+                marginTop: 8,
+              }}
+            >
+              说明：1、如需自动生成对账文件，请开启相关配置。
+              2、已生成的对账单只保留7天，请您及时下载查收。
             </div>
           </>
         )}
