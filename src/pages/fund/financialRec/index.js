@@ -1,10 +1,10 @@
 /*
  * @Date: 2020-07-22 17:33:29
- * @LastEditTime: 2020-07-30 09:50:25
+ * @LastEditTime: 2020-08-17 17:43:27
  */
 
-import React, { useState, useEffect } from 'react';
-import MapForm from '@/components/MapForm';
+import React, { useState, useEffect } from "react";
+import MapForm from "@/components/MapForm";
 import {
   Form,
   Button,
@@ -15,10 +15,10 @@ import {
   Select,
   Pagination,
   Icon,
-} from 'antd';
-import { fetchList } from '@/services/financialRec';
+} from "antd";
+import { fetchList } from "@/services/financialRec";
 
-const { CstInput, CstSelect, CstUpload } = MapForm;
+const { CstInput, CstSelect, CstDate } = MapForm;
 
 import {
   DEFAULT_PAGE_SIZE,
@@ -28,11 +28,11 @@ import {
   FINANCIAL_REC_STATUS_2,
   TRANSTEMP,
   PRECISION,
-} from '@/const';
+} from "@/const";
 
-import noCashFlow from '@/assets/images/fund/no-cash-flow.png';
-import _ from 'lodash';
-import { formateTime, getFloat } from '@/utils';
+import noCashFlow from "@/assets/images/fund/no-cash-flow.png";
+import _ from "lodash";
+import { formateTime, getFloat } from "@/utils";
 
 const FinancialFlow = (props) => {
   const [filterForm, setFilterForm] = React.useState(null);
@@ -80,52 +80,52 @@ const FinancialFlow = (props) => {
 
   const columns = [
     {
-      title: '标题',
-      dataIndex: 'title',
-      width: '25%',
-      align: 'center',
+      title: "标题",
+      dataIndex: "title",
+      width: "25%",
+      align: "center",
     },
 
     {
-      title: '账单类型',
-      align: 'center',
+      title: "账单类型",
+      align: "center",
       render: (record) => financialRecBillTypes[record.billType],
-      width: '10%',
+      width: "10%",
     },
     {
-      title: '交易笔数(笔)',
-      align: 'center',
-      dataIndex: 'tradeCount',
-      width: '10%',
+      title: "交易笔数(笔)",
+      align: "center",
+      dataIndex: "tradeCount",
+      width: "10%",
     },
     {
-      title: '交易金额(元)',
-      align: 'center',
+      title: "交易金额(元)",
+      align: "center",
       render: (record) => (
-        <span style={{ fontWeight: 'bold' }}>
+        <span style={{ fontWeight: "bold" }}>
           {getFloat(record.tradeAmount / TRANSTEMP, PRECISION)}
         </span>
       ),
-      width: '10%',
+      width: "10%",
     },
     {
-      title: '状态',
-      align: 'center',
+      title: "状态",
+      align: "center",
       render: (record) => <span>{financialRecStatus[record.status]}</span>,
-      width: '10%',
+      width: "10%",
     },
 
     {
-      title: '创建时间',
-      key: 'id',
-      align: 'center',
+      title: "创建时间",
+      key: "id",
+      align: "center",
       render: (record) =>
-        moment(record.createTime).format('YYYY-MM-DD HH:MM:SS'),
-      width: '15%',
+        moment(record.createTime).format("YYYY-MM-DD HH:MM:SS"),
+      width: "15%",
     },
     {
-      title: '操作',
-      align: 'center',
+      title: "操作",
+      align: "center",
       render: (record) => (
         <>
           {!record.status === FINANCIAL_REC_STATUS_2 ? (
@@ -141,7 +141,7 @@ const FinancialFlow = (props) => {
           ) : null}
           {record.status === FINANCIAL_REC_STATUS_2 ? (
             <Button
-              style={{ marginLeft: '10px' }}
+              style={{ marginLeft: "10px" }}
               size="small"
               type="primary"
               ghost
@@ -157,41 +157,43 @@ const FinancialFlow = (props) => {
           ) : null}
         </>
       ),
-      width: '20%',
+      width: "20%",
     },
   ];
 
   return (
     <div className="financial-rec">
-      <div className="financial-rec_header">{'财务管理 > 财务对账'}</div>
+      <div className="financial-rec_header">{"财务管理 > 财务对账"}</div>
       <div className="financial-rec_filter">
         <MapForm
           className="filter-form"
           layout="horizontal"
           onCreate={setFilterForm}
         >
+          <CstInput name="beginCreateTime" style={{ display: "none" }} />
+          <CstInput name="endCreateTime" style={{ display: "none" }} />
           <Row>
-            <Col span={7}>
+            <Col span={8}>
               <CstInput
-                labelCol={{ span: 9 }}
-                wrapperCol={{ span: 15 }}
+                labelCol={{ span: 8 }}
+                wrapperCol={{ span: 16 }}
                 name="title"
                 label="标题"
                 customProps={{
-                  placeholder: '输入标题/关键字',
-                  size: 'large',
+                  placeholder: "输入标题/关键字",
+                  size: "large",
                 }}
               />
             </Col>
-            <Col span={7}>
+            <Col span={8}>
               <CstSelect
-                labelCol={{ span: 9 }}
-                wrapperCol={{ span: 15 }}
+                labelCol={{ span: 8 }}
+                wrapperCol={{ span: 16 }}
                 name="billType"
                 label="账单类型"
                 customProps={{
-                  placeholder: '选择账单类型',
-                  size: 'large',
+                  placeholder: "选择账单类型",
+                  size: "large",
                 }}
               >
                 {_.map(financialRecBillTypes, (item, key) => (
@@ -201,7 +203,24 @@ const FinancialFlow = (props) => {
                 ))}
               </CstSelect>
             </Col>
-            <Col span={7} offset={1}>
+          </Row>
+          <Row style={{ marginTop: "30px" }}>
+            <Col span={16}>
+              <CstDate
+                labelCol={{ span: 4 }}
+                wrapperCol={{ span: 20 }}
+                label="交易时间"
+                name="time"
+                customProps={{ type: "rangePicker", tools: true }}
+                onChange={(val) => {
+                  filterForm.setFieldsValue({
+                    beginCreateTime: val[0],
+                    endCreateTime: val[1],
+                  });
+                }}
+              />
+            </Col>
+            <Col span={4} offset={3}>
               <Form.Item>
                 <Button
                   type="primary"
@@ -214,7 +233,7 @@ const FinancialFlow = (props) => {
                 <Button
                   icon="undo"
                   size="large"
-                  style={{ marginLeft: '10px' }}
+                  style={{ marginLeft: "10px" }}
                   onClick={() => filterForm?.resetFields()}
                 >
                   重置
@@ -235,9 +254,9 @@ const FinancialFlow = (props) => {
           columns={columns}
           pagination={false}
           dataSource={list}
-          rowClassName={() => 'global-table_row-tr'}
+          rowClassName={() => "global-table_row-tr"}
           onHeaderRow={() => ({
-            className: 'global-table_head-tr',
+            className: "global-table_head-tr",
           })}
           rowKey={(record, index) => record.id}
           locale={{
