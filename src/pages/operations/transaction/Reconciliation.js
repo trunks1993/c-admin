@@ -2,7 +2,7 @@
  * @Author: Dad
  * @Date: 2020-07-13 19:32:18
  * @LastEditors: Dad
- * @LastEditTime: 2020-08-18 18:51:44
+ * @LastEditTime: 2020-08-20 09:59:39
  */
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Table, Pagination, Icon, Row, Col } from 'antd';
@@ -15,7 +15,7 @@ import { formateTime } from '@/utils';
 import Delete from '@/assets/images/operations/delete.png';
 import noData from '@/assets/images/operations/unData.png';
 
-const { CstInput, CstRangePicker } = MapForm;
+const { CstInput, CstDate } = MapForm;
 
 const Reconciliation = ({ dispatch, reconList, reconTotal, loading }) => {
   const [form, setForm] = useState({});
@@ -136,7 +136,7 @@ const Reconciliation = ({ dispatch, reconList, reconTotal, loading }) => {
       <div className="reconciliation-Info">
         <MapForm
           onCreate={(form) => setForm(form)}
-          layout="inline"
+          layout="horizontal"
           className="filter-form"
         >
           <Row>
@@ -153,7 +153,7 @@ const Reconciliation = ({ dispatch, reconList, reconTotal, loading }) => {
               />
             </Col>
             <Col span={10}>
-              <CstRangePicker
+              <CstDate
                 label="对账时间"
                 name="CreateTime"
                 labelCol={{ span: 6 }}
@@ -161,6 +161,7 @@ const Reconciliation = ({ dispatch, reconList, reconTotal, loading }) => {
                 customProps={{
                   placeholder: ['开始时间', '结束时间'],
                   size: 'large',
+                  type: 'rangePicker',
                 }}
               />
             </Col>
