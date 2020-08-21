@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { DatePicker } from "antd";
-import moment from "moment";
+import React, { useState } from 'react';
+import { DatePicker } from 'antd';
+import moment from 'moment';
+import locale from 'antd/es/date-picker/locale/zh_CN';
 
 const { RangePicker } = DatePicker;
 
@@ -14,19 +15,25 @@ const FormDate = (props) => {
 
   const changeTime = (type) => {
     const today = moment().valueOf();
-    const begin = moment(today - eqs[type]).format("YYYY-MM-DD");
-    onChange([begin, moment(today).format("YYYY-MM-DD")]);
+    const begin = moment(today - eqs[type]).format('YYYY-MM-DD');
+    onChange([begin, moment(today).format('YYYY-MM-DD')]);
   };
 
-  if (type === "datePicker")
-    return <DatePicker value={moment(value)} onChange={handleChange} />;
+  if (type === 'datePicker')
+    return (
+      <DatePicker
+        locale={locale}
+        value={moment(value)}
+        onChange={handleChange}
+      />
+    );
 
-  if (type === "rangePicker")
+  if (type === 'rangePicker')
     return (
       <span className="form-date">
         <span
           className="form-date__comp"
-          style={{ width: tools ? "50%" : "100" }}
+          style={{ width: tools ? '50%' : '100' }}
         >
           <RangePicker
             value={
@@ -34,6 +41,7 @@ const FormDate = (props) => {
                 ? []
                 : [moment(value[0]), moment(value[1])]
             }
+            locale={locale}
             onChange={handleChange}
           />
         </span>
