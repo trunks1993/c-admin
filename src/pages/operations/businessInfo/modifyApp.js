@@ -2,7 +2,7 @@
  * @Author: Dad
  * @Date: 2020-07-16 16:48:10
  * @LastEditors: Dad
- * @LastEditTime: 2020-07-31 16:36:42
+ * @LastEditTime: 2020-08-21 10:44:58
  */
 import React, { useState, useEffect } from 'react';
 import MapForm from '@/components/MapForm';
@@ -64,7 +64,7 @@ const modifyApp = () => {
       if (!err) {
         try {
           const api = appId ? modifyApplication : addApplication;
-          let [errs, data, msg] = await api(value);
+          let [errs, data, msg] = await api({ ...value, appId });
           if (!errs) {
             message.success('操作成功');
             history.push('/admin/operations/businessInfo/application');
