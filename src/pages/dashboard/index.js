@@ -1,6 +1,6 @@
 /*
  * @Date: 2020-07-01 11:32:59
- * @LastEditTime: 2020-07-31 17:35:20
+ * @LastEditTime: 2020-08-21 11:43:26
  */
 import React, { useEffect } from 'react';
 import { connect } from 'dva';
@@ -14,6 +14,7 @@ const dashboard = (props) => {
   const { list, amountInfo, dispatch } = props;
   useEffect(() => {
     dispatch({ type: 'account/setAmount' });
+    dispatch({ type: 'account/setUser' });
   }, []);
 
   return (
