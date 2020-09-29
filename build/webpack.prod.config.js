@@ -1,6 +1,6 @@
 /*
  * @Date: 2020-05-29 14:31:35
- * @LastEditTime: 2020-07-28 10:25:03
+ * @LastEditTime: 2020-08-18 15:36:46
  */
 
 const webpackMerge = require("webpack-merge");
@@ -43,6 +43,7 @@ const config = webpackMerge(baseWebpackConfig, {
       hash: true, // 在打包的资源插入html会加上hash
       cdnConfig: externalConfig,
       onlyCss: false, //加载css
+      favicon: utils.resolve("./../src/assets/images/favicon.png"),
       //  html 文件进行压缩
       minify: {
         removeComments: true, //去注释
