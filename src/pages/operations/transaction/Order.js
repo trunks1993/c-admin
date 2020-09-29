@@ -2,7 +2,7 @@
  * @Author: Dad
  * @Date: 2020-07-13 14:20:06
  * @LastEditors: Dad
- * @LastEditTime: 2020-07-31 17:40:34
+ * @LastEditTime: 2020-08-20 10:02:20
  */
 import React, { useState, useEffect } from 'react';
 import MapForm from '@/components/MapForm';
@@ -20,7 +20,7 @@ import _ from 'lodash';
 import { Select, Form, Button, Table, Pagination, Row, Col } from 'antd';
 import noData from '@/assets/images/operations/unData.png';
 
-const { CstInput, CstSelect, CstRangePicker } = MapForm;
+const { CstInput, CstSelect, CstDate } = MapForm;
 
 const Order = ({ dispatch, list, total, loading }) => {
   const [form, setForm] = useState({});
@@ -43,20 +43,19 @@ const Order = ({ dispatch, list, total, loading }) => {
 
   const initList = () => {
     const data = form?.getFieldsValue();
-    const time = {
-      beginCreateTime: data.CreateTime?.[0]
-        ? moment(data.CreateTime?.[0]).format('YYYY-MM-DD 00:00:00')
-        : undefined,
-      endCreateTime: data.CreateTime?.[0]
-        ? moment(data.CreateTime?.[1]).format('YYYY-MM-DD 23:59:59')
-        : undefined,
-    };
+    // const time = {
+    //   beginCreateTime: data.CreateTime?.[0]
+    //     ? moment(data.CreateTime?.[0]).format("YYYY-MM-DD 00:00:00")
+    //     : undefined,
+    //   endCreateTime: data.CreateTime?.[0]
+    //     ? moment(data.CreateTime?.[1]).format("YYYY-MM-DD 23:59:59")
+    //     : undefined,
+    // };
     dispatch({
       type: 'transaction/fetchList',
       queryParams: {
         currPage,
         pageSize,
-        ...time,
         ...data,
       },
     });
@@ -129,7 +128,13 @@ const Order = ({ dispatch, list, total, loading }) => {
     <div className="order">
       <div className="shop-item_header">{'交易管理 > 交易订单'}</div>
       <div className="order-info">
-        <MapForm layout="horizontal" onCreate={(form) => setForm(form)}>
+        <MapForm
+          layout="horizontal"
+          className="filter-form"
+          onCreate={(form) => setForm(form)}
+        >
+          <CstInput name="beginCreateTime" style={{ display: 'none' }} />
+          <CstInput name="endCreateTime" style={{ display: 'none' }} />
           <Row>
             <Col span={8}>
               <CstInput
@@ -174,7 +179,22 @@ const Order = ({ dispatch, list, total, loading }) => {
               />
             </Col>
           </Row>
-          <Row>
+          <Row style={{ marginTop: 30 }}>
+            <Col span={8}>
+              <CstDate
+                labelCol={{ span: 8 }}
+                wrapperCol={{ span: 16 }}
+                label="交易时间"
+                name="time"
+                customProps={{ type: 'rangePicker' }}
+                onChange={(val) => {
+                  form.setFieldsValue({
+                    beginCreateTime: val[0],
+                    endCreateTime: val[1],
+                  });
+                }}
+              />
+            </Col>
             <Col span={8}>
               <CstInput
                 label="外部订单号"
@@ -187,19 +207,7 @@ const Order = ({ dispatch, list, total, loading }) => {
                 }}
               />
             </Col>
-            <Col span={8}>
-              <CstRangePicker
-                label="交易时间"
-                name="CreateTime"
-                labelCol={{ span: 6 }}
-                wrapperCol={{ span: 18 }}
-                customProps={{
-                  placeholder: ['开始时间', '结束时间'],
-                  size: 'large',
-                }}
-              />
-            </Col>
-            <Col span={7} offset={1}>
+            <Col span={6} offset={2}>
               <Form.Item>
                 <Button
                   icon="search"

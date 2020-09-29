@@ -1,6 +1,6 @@
 /*
  * @Date: 2020-05-29 14:31:03
- * @LastEditTime: 2020-07-28 10:49:05
+ * @LastEditTime: 2020-08-18 15:36:35
  */
 
 const webpackMerge = require("webpack-merge");
@@ -34,6 +34,7 @@ const config = webpackMerge(baseWebpackConfig, {
       template: "index.html", //html模板
       inject: true, // true：默认值，script标签位于html文件的 body 底部
       cdnConfig: externalConfig, // cdn配置
+      favicon: utils.resolve("./../src/assets/images/favicon.png"),
       // onlyCss: true,
     }),
   ],

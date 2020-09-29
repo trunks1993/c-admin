@@ -1,6 +1,6 @@
 /*
  * @Date: 2020-06-23 22:22:28
- * @LastEditTime: 2020-07-21 21:45:23
+ * @LastEditTime: 2020-08-17 14:58:44
  */
 
 export default {
@@ -15,10 +15,10 @@ export default {
   CstRadio: {},
   CstCheckbox: {},
   CstDatePicker: {},
-  CstEditor: {},
   CstTreeSelect: {},
   CstProductSubPanel: {},
   CstCascader: {},
   CstInputNumber: {},
   CstRangePicker: {},
+  CstDate: {}
 };
