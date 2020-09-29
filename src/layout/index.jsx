@@ -15,7 +15,7 @@ const Comp = ({ carCount, user, dispatch, ...rest }) => {
         <RouteList path={rest.location.pathname} />
       </div>
       <Footer className="layout_footer">
-        <div>Copyright © XJF All Rights Reserved</div>
+        <div>Copyright © XQY All Rights Reserved</div>
         <div>领先的数字权益营销服务提供商</div>
       </Footer>
     </div>

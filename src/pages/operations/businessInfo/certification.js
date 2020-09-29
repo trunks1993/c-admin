@@ -2,7 +2,7 @@
  * @Author: Dad
  * @Date: 2020-07-17 20:59:45
  * @LastEditors: Dad
- * @LastEditTime: 2020-08-13 17:38:37
+ * @LastEditTime: 2020-08-21 17:16:26
  */
 
 import React, { useState, useEffect } from 'react';
@@ -61,7 +61,7 @@ const certification = (props) => {
   useEffect(() => {
     if (_.isEmpty(form)) return;
     if (typeData?.identityState === 0) form.setFieldsValue();
-    form.resetFields();
+    form.setFieldsValue();
   }, [tabKey]);
 
   useEffect(() => {
