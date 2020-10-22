@@ -2,7 +2,7 @@
  * @Author: Dad
  * @Date: 2020-07-17 20:59:45
  * @LastEditors: Dad
- * @LastEditTime: 2020-08-21 17:16:26
+ * @LastEditTime: 2020-10-09 16:07:15
  */
 
 import React, { useState, useEffect } from 'react';
@@ -337,7 +337,6 @@ const certification = (props) => {
                         <Button
                           type="primary"
                           onClick={handleSubmit}
-                          type="primary"
                           disabled={Inputdisabled}
                         >
                           提交
